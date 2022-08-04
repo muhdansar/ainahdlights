@@ -3,6 +3,8 @@ import Header from "./Header";
 import Nav from "./Nav";
 
 const SignUp = () => {
+
+    
     return (
     <>
         <Header></Header>
@@ -34,6 +36,7 @@ const SignUp = () => {
                 <p>Postal Code</p>
                 <input type="number" placeholder="Postal Code"></input>
             </div>
+            <button>Let's Start Ordering!</button>
     </form>
     </>
     )

@@ -81,3 +81,7 @@ img {
   border-radius: 5px;
   background-color: rgb(250, 220, 208)
 }
+
+button {
+  margin-top: 10px;
+}

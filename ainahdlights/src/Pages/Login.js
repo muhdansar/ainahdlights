@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Nav from "./Nav";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -14,12 +15,14 @@ return (
                 <input type="string" placeholder="Email"></input>
             </div>
             <div>
-                <input type="string" placeholder="Password"></input>
+                <input type="password" placeholder="Password"></input>
             </div>
             <div>
                 <button>Log In</button>
             </div>
         </form>
+        <h2><Link to="/signup">Don't have an account? Click to sign up!</Link></h2>
+        
     </div>
 )
 }

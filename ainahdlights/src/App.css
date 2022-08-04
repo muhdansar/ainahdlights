@@ -37,9 +37,17 @@
   }
 }
 
+h1 {
+  text-align: center;
+}
+
 li {
   display: inline;
+  padding: 10px;
+}
 
+.li {
+  display: inline;
   padding: 10px;
 }
 
@@ -67,7 +75,7 @@ img {
 }
 
 .navtop {
-  margin: 0 auto;
+  text-align: center;
   padding: 10px;
   border: solid black 1px;
   border-radius: 5px;

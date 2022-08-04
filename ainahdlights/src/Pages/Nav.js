@@ -1,7 +1,5 @@
 import React from "react";
-import { ReactDOM } from 'react';
 import { Link } from "react-router-dom";
-import LoginPage from "./Login";
 
 const Nav = () => {
     return (
@@ -11,7 +9,7 @@ const Nav = () => {
                     <li>Our Cookies</li>
                     <li>Our Cakes</li>
                     <li>Our Story</li>
-                    <Link to="/login">Sign In</Link>
+                    <Link to="/login" className="li">Sign In</Link>
                 </ul>
             </nav>   
         </div>

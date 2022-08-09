@@ -6,10 +6,9 @@ const Nav = () => {
         <div className="navtop">
             <nav>
                 <ul>
-                    <li>Our Cookies</li>
-                    <li>Our Cakes</li>
-                    <li>Our Story</li>
-                    <Link to="/login" className="li">Sign In</Link>
+                    <Link to="/" className="li">Home</Link>
+                    <Link to="/ourstory" className="li">Our Story</Link>
+                    <Link to="/login" className="li">Sign In to Order</Link>
                 </ul>
             </nav>   
         </div>

@@ -80,7 +80,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-//get acc email
+//get acc email/name
 router.get("/account/:id", async (req, res) => {
     try {
         const name = req.params.id;
@@ -90,6 +90,40 @@ router.get("/account/:id", async (req, res) => {
         console.log(error.message)
     }
 })
+
+//insert order
+router.post("/addtocart/tartnenas", async (req, res) => {
+    try {
+        // const email = req.body.email;//placeholder
+        // const item = req.body.item;
+        // const price = req.body.price;
+        // const qty = req.body.qty;
+
+        // const pushToCart = await pool.query("INSERT INTO orderpercustomer (email, item, price, qty) VALUES ($1, $2, $3, $4) RETURNING *", [email, item, price, qty]);
+        // const sumSimilar = await pool.query("SELECT item, SUM(qty) FROM orderpercustomer GROUP BY item");
+
+        // res.json(sumSimilar.rows);
+        const qty = req.body.qty;
+        const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='tart nenas'");
+        const currentQty = quantity.rows[0].qty;
+        const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='tart nenas'", [(Number(qty)+Number(currentQty))]);
+        res.json(quantity);
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+router.post("/addtocart/kuihmakmur", async (req, res) => {
+    try {
+        const qty = req.body.qty;
+        const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='kuih makmur'");
+        const currentQty = quantity.rows[0].qty;
+        const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='kuih makmur'", [(Number(qty)+Number(currentQty))]);
+        res.json(quantity);
+    } catch (error) {
+        console.log(error.message)
+    }
+});
 
 //validation testing
 router.get("/show", async (req, res) => {
@@ -104,6 +138,16 @@ router.get("/show", async (req, res) => {
                 res.json("User created")
             }
         }
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+//test new show fn
+router.get("/testing", async (req, res) => {
+    try {
+        const test = await pool.query("SELECT qty FROM orderpercustomer WHERE item='tart nenas'");
+        res.json(test.rows[0].qty)
     } catch (error) {
         console.log(error.message)
     }

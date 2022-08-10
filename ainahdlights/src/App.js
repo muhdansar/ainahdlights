@@ -7,13 +7,14 @@ import SignUp from './Pages/SignUp';
 import Footer from './Pages/Footer';
 import OurStory from './Pages/OurStory';
 import Account from './Pages/Account';
-
+import ScrollToTop from './ScrollToTop';
 
 
 function App() {
   return (
   <>
   <BrowserRouter>
+  <ScrollToTop />
   <Routes>
     <Route path="/" element={<HomePage />}/>
     <Route path="/login" element={<LoginPage />}/>

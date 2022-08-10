@@ -31,7 +31,9 @@ return (
             <nav>
                 <ul>
                     <Link to="/" className="li">Home</Link>
-                    <Link to="/ourstory" className="li">Our Story</Link>                </ul>
+                    <Link to="/ourstory" className="li">Our Story</Link>
+                    <Link to="/cart" className="li">Cart</Link>
+                </ul>
             </nav>   
         </div>
     <h1>Welcome {email}!</h1>

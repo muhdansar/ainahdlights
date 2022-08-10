@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Nav from "./Nav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 const [email, setEmail] =  useState ("");
@@ -24,7 +24,8 @@ const handleChangePassword = (event) => {
 // };
 // 
 
-const sendThis = () => {
+const sendThis = async () => {
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,7 +35,9 @@ const sendThis = () => {
         })
     };
     try {
-    const data = fetch("http://localhost:5001/api/login", requestOptions);
+    const data = await fetch("http://localhost:5001/api/login", requestOptions);
+    const tryThis = data.json();
+    console.log(tryThis);
     } catch(error) {
         console.log(error.message);
     }
@@ -59,7 +62,7 @@ return (
                 </label>
             </div>
             <div className="typeHere">
-                <button>Let's start ordering!</button>
+                <Link to="/account"><button>Let's start ordering!</button></Link>
             </div>
         </form>
         <h2><Link to="/signup">Don't have an account? Click to sign up!</Link></h2>

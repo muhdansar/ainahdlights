@@ -3,10 +3,7 @@ const router = express.Router();
 const pool = require("../db")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-ACCESS_SECRET = "qm8HnWRhJbnJVmQJbg1D62XLhFIEy8wGJ1R6ch6f1rzJhUrE2fu0cuSLDr5jV119NP6AB23msqRLDIF8xldtWEU5H8YsytqPBXMV"
-// const bodyParser = require('body-parser');
-
-// const jsonParser = bodyParser.json();
+ACCESS_SECRET = "qm8HnWRhJbnJVmQJbg1D62XLhFIEy8wGJ1R6ch6f1rzJhUrE2fu0cuSLDr5jV119NP6AB23msqRLDIF8xldtWEU5H8YsytqPBXMV";
 
 //test route
 router.get('/test', async (req, res) => {
@@ -46,7 +43,8 @@ router.post("/login", async (req, res) => {
 
         const response = { access }
 
-        res.json(response);
+        const findName = await pool.query("SELECT cust_name FROM customers WHERE email=($1)", [email]);
+        res.json(findName.rows[0].cust_name);
 
     } catch (error) {
         console.log(error.message)
@@ -81,6 +79,17 @@ router.post("/signup", async (req, res) => {
         console.log(error.message)
     }
 });
+
+//get acc email
+router.get("/account/:id", async (req, res) => {
+    try {
+        const name = req.params.id;
+        const getUser = await pool.query("SELECT cust_name FROM customers WHERE cust_name=($1)", [name])
+        res.json(getUser.rows[0].cust_name);
+    } catch (error) {
+        console.log(error.message)
+    }
+})
 
 //validation testing
 router.get("/show", async (req, res) => {

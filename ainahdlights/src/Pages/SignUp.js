@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Nav from "./Nav";
-
 
 const SignUp = () => {
 const [email, setEmail] = useState("");
@@ -56,7 +56,7 @@ const handleChangeName = (event) => {
 //     }
 // });
 
-const sendThis = () => {
+const sendThis = async () => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -68,7 +68,9 @@ const sendThis = () => {
         })
     };
     try {
-    const data = fetch("http://localhost:5001/api/signup", requestOptions);
+    const data = await fetch("http://localhost:5001/api/signup", requestOptions);
+    const tryThis = data.json();
+    console.log(tryThis);
     } catch(error) {
         console.log(error.message);
     }
@@ -109,7 +111,7 @@ const sendThis = () => {
                 <p>Postal Code</p>
                 <input type="number" placeholder="Postal Code" onChange={handleChangePostal}></input>
             </div>
-            <button>Let's Start Ordering!</button>
+            <Link to="/login"><button>Let's Start Ordering!</button></Link>
     </form>
     </>
     )

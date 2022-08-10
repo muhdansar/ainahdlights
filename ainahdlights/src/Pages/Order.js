@@ -30,6 +30,8 @@ const Order = () => {
             } catch (error) {
             console.log(error.message);
         }
+        setQtyNenas(1);
+        alert(qtyNenas + " Nenas Added!");
     };
 
     const handleMakmurChange = (event) => {
@@ -55,6 +57,8 @@ const Order = () => {
             } catch (error) {
             console.log(error.message);
         }
+        setQtyMakmur(1);
+        alert(qtyMakmur + " Makmur Added!");
     }
 
     return (
@@ -68,7 +72,7 @@ const Order = () => {
                         <h3>Kuih Tart Nenas</h3>
                         <p>All Time Favourite</p>
                         <p>$25/bottle (approx 50pcs)</p>
-                        <input onChange={handleNenasChange} type="number" placeholder="1"></input>
+                        <input onChange={handleNenasChange} type="number" placeholder="1" value={qtyNenas}></input>
                         <button>Add to Cart</button>
                         </form>
                     </div>
@@ -78,7 +82,7 @@ const Order = () => {
                         <h3>Kuih Makmur Ball</h3>
                         <p>Classic Re-imagined</p>
                         <p>$25/bottle (approx 50pcs)</p>
-                        <input onChange={handleMakmurChange} type="number" placeholder="1"></input>
+                        <input onChange={handleMakmurChange} type="number" placeholder="1" value={qtyMakmur}></input>
                         <button>Add to Cart</button>
                         </form>
                      </div>

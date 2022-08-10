@@ -18,18 +18,34 @@ const handleChangePassword = (event) => {
 }
 
 //placeholder
-const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(email, password)
-};
+// const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log(email, password)
+// };
 // 
+
+const sendThis = () => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            email: email,
+            cust_password: password
+        })
+    };
+    try {
+    const data = fetch("http://localhost:5001/api/login", requestOptions);
+    } catch(error) {
+        console.log(error.message);
+    }
+};
 
 return (
     <div>
         <Header></Header>
         <Nav></Nav>
         <h2>Sign In</h2>
-        <form onSubmit={handleSubmit} className="signInForm">
+        <form onSubmit={sendThis} className="signInForm">
             <div className="typeHere">
                 <label>
                     Email: 

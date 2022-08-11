@@ -5,7 +5,21 @@ import Card from './Card';
 
 const Cart = () => {
   const [email, setEmail] = useState('email');
-  const [mapData, setMapData] = useState("");
+  //fetching placeholder on refresh
+  const [mapData, setMapData] = useState([
+    {item: "item",
+    price: "price",
+    qty: "qty"
+    },
+    {item: "item",
+    price: "price",
+    qty: "qty"
+    },
+    {item: "item",
+    price: "price",
+    qty: "qty"
+    }
+  ]);
 
   const cartSite = 'http://localhost:5001/api/cart';
 
@@ -40,12 +54,14 @@ const Cart = () => {
     }
   };
 
+  const totalAmt = Number(mapData[0].price*mapData[0].qty) + Number(mapData[1].price*mapData[1].qty) + Number(mapData[2].price*mapData[2].qty);
+  
   useEffect(() => {
     getDetails(dbSite);
     getCart(cartSite);
-  }, [mapData]);
+  }, [mapData, totalAmt]);
 
-  const totalAmt = Number(mapData[0].price*mapData[0].qty) + Number(mapData[1].price*mapData[1].qty) + Number(mapData[2].price*mapData[2].qty);
+
 
   return (
     <>
@@ -69,12 +85,14 @@ const Cart = () => {
         </nav>
       </div>
       <h1>{email}'s cart</h1>
-        <div>
-            <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
-            <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
-            <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
-        </div>
-      <h2>Total: ${totalAmt}</h2>
+      {(mapData === 0) ?
+         <h1>Loading...</h1> : <div>
+         <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
+         <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
+         <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
+         <h2>Total: ${totalAmt}</h2>
+     </div>}
+      
       <button>Checkout</button>
     </>
   );

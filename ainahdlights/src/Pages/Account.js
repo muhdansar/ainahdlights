@@ -34,6 +34,7 @@ return (
                     <Link to="/ourstory" className="li">Our Story</Link>
                     <Link to="/account" className="li">Add to Cart</Link>
                     <Link to="/cart" className="li">Cart</Link>
+                    <Link to="/orderup" className="li">Orders</Link>
                 </ul>
             </nav>   
         </div>

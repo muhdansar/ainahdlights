@@ -228,12 +228,12 @@ router.get("/allOrders", async (req, res) => {
     }
 })
 
-// router.delete("/allOrders", async (req, res) => {
-//     try {
-//         const removeOrders = await pool.query("DELETE FROM orderslisted")
-//         res.json("deleted")
-//     } catch (error) {
-//         console.log(error)
-//     }
-// })
+router.post("/deleteOrder", async (req, res) => {
+    try {
+        const removeOrders = await pool.query("DELETE FROM orderslisted")
+        res.json("deleted")
+    } catch (error) {
+        console.log(error)
+    }
+})
 module.exports = router;

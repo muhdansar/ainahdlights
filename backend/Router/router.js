@@ -113,12 +113,65 @@ router.post("/addtocart/tartnenas", async (req, res) => {
     }
 });
 
+//add makmur to cart
 router.post("/addtocart/kuihmakmur", async (req, res) => {
     try {
         const qty = req.body.qty;
         const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='kuih makmur'");
         const currentQty = quantity.rows[0].qty;
         const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='kuih makmur'", [(Number(qty)+Number(currentQty))]);
+        res.json(quantity);
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+//add suji to cart
+router.post("/addtocart/sujibadam", async (req, res) => {
+    try {
+        const qty = req.body.qty;
+        const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='suji badam'");
+        const currentQty = quantity.rows[0].qty;
+        const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='suji badam'", [(Number(qty)+Number(currentQty))]);
+        res.json(quantity);
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+//add oreo cheesecake to cart
+router.post("/addtocart/oreocheese", async (req, res) => {
+    try {
+        const qty = req.body.qty;
+        const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='oreo cheesecake'");
+        const currentQty = quantity.rows[0].qty;
+        const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='oreo cheesecake'", [(Number(qty)+Number(currentQty))]);
+        res.json(quantity);
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+//add tiramisu to cart
+router.post("/addtocart/tiramisu", async (req, res) => {
+    try {
+        const qty = req.body.qty;
+        const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='tiramisu'");
+        const currentQty = quantity.rows[0].qty;
+        const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='tiramisu'", [(Number(qty)+Number(currentQty))]);
+        res.json(quantity);
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+//add mint cheesecake to cart
+router.post("/addtocart/mintcheese", async (req, res) => {
+    try {
+        const qty = req.body.qty;
+        const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='mint cheesecake'");
+        const currentQty = quantity.rows[0].qty;
+        const doThis = await pool.query("UPDATE orderpercustomer SET qty=($1) WHERE item='mint cheesecake'", [(Number(qty)+Number(currentQty))]);
         res.json(quantity);
     } catch (error) {
         console.log(error.message)
@@ -148,6 +201,16 @@ router.get("/testing", async (req, res) => {
     try {
         const test = await pool.query("SELECT qty FROM orderpercustomer WHERE item='tart nenas'");
         res.json(test.rows[0].qty)
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+//test fn for cart page
+router.get("/cart", async (req, res) => {
+    try {
+        const test = await pool.query("SELECT * FROM orderpercustomer WHERE qty!=0");
+        res.json(test.rows);
     } catch (error) {
         console.log(error.message)
     }

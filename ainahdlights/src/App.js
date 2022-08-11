@@ -8,6 +8,7 @@ import Footer from './Pages/Footer';
 import OurStory from './Pages/OurStory';
 import Account from './Pages/Account';
 import ScrollToTop from './ScrollToTop';
+import Cart from './Pages/Cart';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     <Route path="/signup" element={<SignUp />}/>
     <Route path="/ourstory" element={<OurStory />}/>
     <Route path="/account" element={<Account />}/>
+    <Route path="/cart" element={<Cart />}/>
   </Routes>
   </BrowserRouter>
   <Footer></Footer>

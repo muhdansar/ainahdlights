@@ -9,6 +9,13 @@ CREATE TABLE orderpercustomer(
     price NUMERIC(20),
     qty NUMERIC(20)
 )
+
+CREATE TABLE orderslisted(
+    order_id SERIAL PRIMARY KEY,
+    orderdate DATE,
+    totalpaid INTEGER(255)
+)
+
 const qty = req.body.qty;
 const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='tart nenas'");
 const currentQty = quantity.rows[0].qty;

@@ -9,6 +9,7 @@ import OurStory from './Pages/OurStory';
 import Account from './Pages/Account';
 import ScrollToTop from './ScrollToTop';
 import Cart from './Pages/Cart';
+import TheFinalOrder from './Pages/TheFinalOrder';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <Route path="/ourstory" element={<OurStory />}/>
     <Route path="/account" element={<Account />}/>
     <Route path="/cart" element={<Cart />}/>
+    <Route path="/orderup" element={<TheFinalOrder/>}/>
   </Routes>
   </BrowserRouter>
   <Footer></Footer>

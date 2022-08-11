@@ -17,13 +17,6 @@ const handleChangePassword = (event) => {
     setPassword(event.target.value);
 }
 
-//placeholder
-// const handleSubmit = (event) => {
-//     event.preventDefault();
-//     console.log(email, password)
-// };
-// 
-
 const sendThis = async () => {
 
     const requestOptions = {
@@ -35,9 +28,9 @@ const sendThis = async () => {
         })
     };
     try {
-    const data = await fetch("http://localhost:5001/api/login", requestOptions);
-    const tryThis = data.json();
-    console.log(tryThis);
+    const res = await fetch("http://localhost:5001/api/login", requestOptions);
+    const data = res.json();
+    console.log(data.access);
     } catch(error) {
         console.log(error.message);
     }

@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
         const response = { access }
 
         const findName = await pool.query("SELECT cust_name FROM customers WHERE email=($1)", [email]);
-        res.json(findName.rows[0].cust_name);
+        res.json(response);
 
     } catch (error) {
         console.log(error.message)
@@ -94,15 +94,6 @@ router.get("/account/:id", async (req, res) => {
 //insert order
 router.post("/addtocart/tartnenas", async (req, res) => {
     try {
-        // const email = req.body.email;//placeholder
-        // const item = req.body.item;
-        // const price = req.body.price;
-        // const qty = req.body.qty;
-
-        // const pushToCart = await pool.query("INSERT INTO orderpercustomer (email, item, price, qty) VALUES ($1, $2, $3, $4) RETURNING *", [email, item, price, qty]);
-        // const sumSimilar = await pool.query("SELECT item, SUM(qty) FROM orderpercustomer GROUP BY item");
-
-        // res.json(sumSimilar.rows);
         const qty = req.body.qty;
         const quantity = await pool.query("SELECT qty FROM orderpercustomer WHERE item='tart nenas'");
         const currentQty = quantity.rows[0].qty;
@@ -216,4 +207,33 @@ router.get("/cart", async (req, res) => {
     }
 })
 
+router.post("/cart", async (req, res) => {
+    try {
+        const date = req.body.date;
+        const orderPrice = req.body.orderPrice;
+        const insertNewTable = await pool.query("INSERT INTO orderslisted(orderdate, totalpaid) VALUES ($1, $2)", [date, orderPrice])
+        const viewOrder = await pool.query("SELECT * FROM orderslisted")
+        res.json(viewOrder.rows);
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+router.get("/allOrders", async (req, res) => {
+    try {
+        const getOrder = await pool.query("SELECT * FROM orderslisted")
+        res.json(getOrder.rows)
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+// router.delete("/allOrders", async (req, res) => {
+//     try {
+//         const removeOrders = await pool.query("DELETE FROM orderslisted")
+//         res.json("deleted")
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 module.exports = router;

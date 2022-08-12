@@ -5,7 +5,6 @@ import Card from './Card';
 
 const Cart = () => {
   const [email, setEmail] = useState('email');
-  //fetching placeholder on refresh
   const [mapData, setMapData] = useState(null);
   const [totalAmt, setTotalAmt] = useState(0);
 
@@ -121,40 +120,35 @@ const Cart = () => {
             <h2>Total: ${totalAmt}</h2>
         </div> :
         (mapData.length === 5) ? 
-        <div>
-        <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
-        <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
-        <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
-        <Card item={mapData[3].item} qty={mapData[3].qty} price={mapData[3].price}></Card>
-        <Card item={mapData[4].item} qty={mapData[4].qty} price={mapData[4].price}></Card>
-        <h2>Total: ${totalAmt}</h2>
-    </div> :
-    (mapData.length === 5) ? 
-        <div>
-        <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
-        <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
-        <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
-        <Card item={mapData[3].item} qty={mapData[3].qty} price={mapData[3].price}></Card>
-        <Card item={mapData[4].item} qty={mapData[4].qty} price={mapData[4].price}></Card>
-        <h2>Total: ${totalAmt}</h2>
-    </div> :
-    (mapData.length === 6) ? 
-    <div>
-    <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
-    <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
-    <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
-    <Card item={mapData[3].item} qty={mapData[3].qty} price={mapData[3].price}></Card>
-    <Card item={mapData[4].item} qty={mapData[4].qty} price={mapData[4].price}></Card>
-    <Card item={mapData[5].item} qty={mapData[5].qty} price={mapData[5].price}></Card>
-    <h2>Total: ${totalAmt}</h2>
-    </div> :
-
-
-
-
+            <div>
+            <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
+            <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
+            <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
+            <Card item={mapData[3].item} qty={mapData[3].qty} price={mapData[3].price}></Card>
+            <Card item={mapData[4].item} qty={mapData[4].qty} price={mapData[4].price}></Card>
+            <h2>Total: ${totalAmt}</h2>
+            </div> :
+        (mapData.length === 5) ? 
+            <div>
+            <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
+            <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
+            <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
+            <Card item={mapData[3].item} qty={mapData[3].qty} price={mapData[3].price}></Card>
+            <Card item={mapData[4].item} qty={mapData[4].qty} price={mapData[4].price}></Card>
+            <h2>Total: ${totalAmt}</h2>
+            </div> :
+        (mapData.length === 6) ? 
+            <div>
+            <Card item={mapData[0].item} qty={mapData[0].qty} price={mapData[0].price}></Card>
+            <Card item={mapData[1].item} qty={mapData[1].qty} price={mapData[1].price}></Card>
+            <Card item={mapData[2].item} qty={mapData[2].qty} price={mapData[2].price}></Card>
+            <Card item={mapData[3].item} qty={mapData[3].qty} price={mapData[3].price}></Card>
+            <Card item={mapData[4].item} qty={mapData[4].qty} price={mapData[4].price}></Card>
+            <Card item={mapData[5].item} qty={mapData[5].qty} price={mapData[5].price}></Card>
+            <h2>Total: ${totalAmt}</h2>
+            </div> :
             <h2>{totalAmt}</h2>
         }
-      
       <Link to="/orderup"><button onClick={goToOrders}>Checkout</button></Link>
     </>
   );

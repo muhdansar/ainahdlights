@@ -31,7 +31,6 @@ router.post("/login", async (req, res) => {
             console.log("email or pass incorrect");
             res.json("email or pass incorrect")
         }
-        // const findPW = await pool.query("SELECT cust_password FROM customers WHERE ")
 
         const payload = {
             email: email

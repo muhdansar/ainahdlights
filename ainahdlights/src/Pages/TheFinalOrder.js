@@ -27,10 +27,7 @@ const TheFinalOrder = () => {
 
     useEffect (() => {
     getCart(cartSite);
-    })
-
-   
-    // const deleteSite = "http://localhost:5001/api/deleteOrder";
+    }, [])
 
    const cancelOrder = async () => {
     try {
